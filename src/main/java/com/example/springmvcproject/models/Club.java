@@ -1,10 +1,8 @@
 package com.example.springmvcproject.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -14,17 +12,18 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Table(name = "clubs")
 public class Club {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String title;
-    private String photoUrl;
-    private String content;
+    long id;
+    String title;
+    String photoUrl;
+    String content;
     @CreationTimestamp
-    private LocalDateTime createdOn;
+    LocalDateTime createdOn;
     @UpdateTimestamp
-    private LocalDateTime updatedOn;
+    LocalDateTime updatedOn;
 }
