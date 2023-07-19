@@ -32,6 +32,12 @@ public class ClubServiceImpl implements ClubService {
         return clubRepository.save(club);
     }
 
+    @Override
+    public ClubDTO findById(long clubId) {
+        Club club = clubRepository.findById(clubId).get();
+        return mapToClubDto(club);
+    }
+
     private ClubDTO mapToClubDto(Club club) {
         ClubDTO clubDto = ClubDTO.builder()
                 .id(club.getId())
